@@ -41,6 +41,9 @@ window.addEventListener("keydown" , function(e){
         if(e.key == keyList[i] && e.key != checkKey){
             walkSneck( keyList[i] );
         }
+        if (e.key == "F12") {
+            e.preventDefault()
+        }
     }
 })
 
@@ -131,8 +134,3 @@ window.addEventListener("contextmenu" , function(e){
     e.preventDefault()
 });
 
-window.addEventListener("keydown", function(e){
-    if (e.key == "F12") {
-        e.preventDefault()
-    }
-});
