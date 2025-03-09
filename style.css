@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 section{
+    
     font-family: 'Courier New', Courier, monospace;
     height: 100vh;
     background-color: darkgray;
@@ -42,4 +43,33 @@ section{
     grid-row-start: 4;
     position: relative;
     z-index: 99;
+}
+/* sec-game-over */
+.sec-game-over{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    left: 0;
+}
+.sec-game-over h2{
+    font-size: 50px;
+
+}
+.playerFood{
+    color: rgb(157, 8, 37);
+    font-size: 20px;
+}
+.sec-game-over button{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 70%;
+    font-size: 23px;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 12px;
 }

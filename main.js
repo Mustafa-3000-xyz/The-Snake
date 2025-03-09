@@ -9,6 +9,17 @@ body.classList.add("body");
 bodyParts.push(body); // i want show first div
 
 let stateSneckWalk = [];
+
+let contentGameOver = `
+    <section class="sec-game-over">
+        <h2>Game over</h2>
+        <div>
+            <h3>Your food => <span class="playerFood">34</span> </h3>
+        </div>
+        <button class="btnAgain">Again</button>
+        <h3> If it doesn't work , try reloading </h3>
+    </section>
+`
 // ======= //
 let styleSection = window.getComputedStyle(section);
 let rowsSection = +styleSection.getPropertyValue("grid-template-rows").split(" ").length;  // the getPropertyValue( ) return string value
@@ -24,7 +35,6 @@ let keyList = ["w" , "s" , "d" , "a" , "W" , "S" , "D" , "A" , "ص" , "س" , "ي
 let checkKey = "";
 let clearTheInterval;
 let countPoint = 0;
-titlePoints.innerHTML = countPoint
 // =================================== //
 window.addEventListener("keydown" , function(e){
     for (let i = 0; i < keyList.length; i++) {
@@ -61,9 +71,17 @@ function walkSneck(theKey){
 function gemeOver(){
     if (locationHeadRow == 1 || locationHeadRow == rowsSection + 1  
         || locationHeadColumn == 0 || locationHeadColumn == columnsSection + 1) {
-        window.alert(`Game Over!
-            your food is [${countPoint}]`);
-        location.reload(); 
+            section.innerHTML = contentGameOver;
+            getElement();
+    }
+}
+
+function getElement(){
+    let playerFood = document.querySelector(".playerFood");
+    let btnAgain = document.querySelector(".btnAgain");
+    playerFood.innerHTML = countPoint;
+    btnAgain.onclick = function(){
+        location.reload();
     }
 }
 
@@ -108,3 +126,13 @@ function moveBody(){
         bodyParts[i].style.gridColumnStart = stateSneckWalk[i].column;
     }
 }
+
+window.addEventListener("contextmenu" , function(e){
+    e.preventDefault()
+});
+
+window.addEventListener("keydown", function(e){
+    if (e.key == "F12") {
+        e.preventDefault()
+    }
+});
