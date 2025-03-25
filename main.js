@@ -20,6 +20,11 @@ let contentGameOver = `
         <h3> If it doesn't work , try reloading </h3>
     </section>
 `
+let notAvailable = `
+    <section class="sec-game-over">
+        <h2 style="font-size:23px; text-align:center;">This game is available for pc</h2>
+    </section>
+`
 // ======= //
 let styleSection = window.getComputedStyle(section);
 let rowsSection = +styleSection.getPropertyValue("grid-template-rows").split(" ").length;  // the getPropertyValue( ) return string value
@@ -74,7 +79,7 @@ function walkSneck(theKey){
 function gemeOver(){
     if (locationHeadRow == 1 || locationHeadRow == rowsSection + 1  
         || locationHeadColumn == 0 || locationHeadColumn == columnsSection + 1) {
-            section.innerHTML = contentGameOver;
+            document.body.innerHTML = contentGameOver;
             getElement();
     }
 }
@@ -134,3 +139,7 @@ window.addEventListener("contextmenu" , function(e){
     e.preventDefault()
 });
 
+
+if (this.innerWidth <= 768) {
+    document.body.innerHTML = notAvailable;
+}
